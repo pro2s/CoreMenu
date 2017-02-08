@@ -2,7 +2,8 @@
   "name": "Angular2Spa",
   "version": "0.0.0",
   "scripts": {
-    "test": "karma start ClientApp/test/karma.conf.js"
+    "test": "karma start ClientApp/test/karma.conf.js",
+    "webpack": "node_modules/.bin/webpack"
   },
   "dependencies": {
     "@angular/common": "2.0.2",
@@ -43,7 +44,7 @@
     "to-string-loader": "^1.1.5",
     "typescript": "^2.0.3",
     "url-loader": "^0.5.7",
-    "webpack": "^2.2.0",
+    "webpack": "^2.2.1",
     "webpack-hot-middleware": "^2.12.2",
     "webpack-merge": "^0.14.1",
     "zone.js": "^0.6.25"
