@@ -23,21 +23,73 @@
     </tbody>
 </table>
 
-<button type="button" class="btn btn-primary" (click)="staticModal.show()">Static modal</button>
+<button type="button" class="btn btn-primary" (click)="parseMenu.show()">Parse Menu</button>
  
-<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
+<div class="modal fade" bsModal #parseMenu="bs-modal" [config]="{backdrop: 'static'}"
      tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title pull-left">Static modal</h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
+        <h4 class="modal-title pull-left">Parse Menu</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="parseMenu.hide()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        This is static modal, backdrop click will not close it.
-        Click <b>&times;</b> to close modal.
+        <form name="parseForm">
+            <p [ngClass]="{'text-warning':error, 'text-success':!error}" *ngIf="message!=''">{{message}}</p>
+            <div class="form-group">
+                <div class="pull-right">{{source.info}}</div>
+                <label for="source">Source</label>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="sourceSelect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <img [src]="source.icon" width="24" height="24">
+                        {{source.name}}
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="selectFrom">
+                        <li *ngFor="let service of services">
+                            <a (click)="setSource(service)">
+                                <img [src]="service.icon" width="24" height="24">
+                                &nbsp;{{service.name}}
+                            </a>
+                        </li>
+                    </ul>
+                    <button class="btn btn-default" type="button" id="sourcesUpdate" (click)="getParsers()"><i class="glyphicon glyphicon-refresh"></i></button>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="fromDate" translate>From</label>
+                <div class="input-group">
+                    <input type="text" name="fromDate" class="form-control" [value]="input.start | amDateFormat:'L'" (input)="setStart($event.target.value)" placeholder="{{startDays[0].date | amDateFormat:'L'}}" moment-validate>
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span translate>SelectDay</span>&nbsp;<span class="caret"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li *ngFor="let day of startDays"><a (click)="setStart(day.date)">{{day.name}}</a></li>
+                        </ul>
+                    </div><!-- /btn-group -->
+                </div><!-- /input-group -->
+            </div>
+            <div class="form-group">
+                <label for="fromDate" translate>Count</label>
+                <input type="text" class="form-control" id="fromDate" placeholder="" ng-model="input.count">
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="input.update"> <p translate>Update</p>
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="input.next"> <p translate>Next</p>
+                </label>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" (click)="parseMenu.hide()">Close</button>
+          <button type="button" class="btn btn-primary" (click)="doParse();" translate>Parse</button>
       </div>
     </div>
   </div>
