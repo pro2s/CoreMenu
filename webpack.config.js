@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
-var BitBarWebpackProgressPlugin = require("bitbar-webpack-progress-plugin");
+const BitBarWebpackProgressPlugin = require("bitbar-webpack-progress-plugin");
 
 module.exports = (env) => {
     // Configuration in common to both client-side and server-side bundles
@@ -23,7 +23,7 @@ module.exports = (env) => {
                 { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' }
             ]
         },
-        plugins: [new CheckerPlugin(), new BitBarWebpackProgressPlugin()]
+        plugins: [new CheckerPlugin()]
     };
 
     // Configuration for client-side bundle suitable for running in browsers
@@ -59,7 +59,10 @@ module.exports = (env) => {
                 sourceType: 'commonjs2',
                 name: './vendor'
             })
-        ],
+        ].concat(isDevBuild ? [
+            // Plugins that apply in development builds only
+            new BitBarWebpackProgressPlugin()
+        ] : []),
         output: {
             libraryTarget: 'commonjs',
             path: path.join(__dirname, './ClientApp/dist')
