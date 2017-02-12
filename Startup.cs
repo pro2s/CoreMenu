@@ -55,6 +55,11 @@ namespace CoreMenu
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    name: "ApiError",
+                    template: "api/{*url}",
+                    defaults: new { controller = "Error", action = "Handle404" });
+
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
 

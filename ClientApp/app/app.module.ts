@@ -9,7 +9,8 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
-import { GetMenuComponent } from './components/getmenu/getmenu.component';
+import { ParseMenuComponent } from './components/parsemenu/parsemenu.component';
+import { EditMenuComponent } from './components/editmenu/editmenu.component';
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -19,7 +20,8 @@ import { GetMenuComponent } from './components/getmenu/getmenu.component';
         CounterComponent,
         FetchDataComponent,
         HomeComponent,
-        GetMenuComponent
+        ParseMenuComponent,
+        EditMenuComponent
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
@@ -31,7 +33,7 @@ import { GetMenuComponent } from './components/getmenu/getmenu.component';
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
-            { path: 'get-menu', component: GetMenuComponent },
+            { path: 'edit-menu', component: EditMenuComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]

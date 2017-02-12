@@ -4,9 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CoreMenu.Services;
+using System.Net.Http;
+using System.Net;
 
 namespace CoreMenu.Controllers
 {
+    [ApiExceptionFilter]
     [Route("api/[controller]")]
     public class ParserController : Controller
     {
