@@ -69,7 +69,7 @@ namespace CoreMenu.Services
                     // @"((?<name>[^\n]+),(?<weight>[\s0-9/]+)([^\n]+))|(?<name>[^\n]+)"
 
                     // TODO: move Regex to config for service
-                    var matches = Regex.Matches(result, @"(?<name>[^\n]+),(?<weight>[\s0-9/]+)([^\n]+)");
+                    var matches = Regex.Matches(result, @"(?<name>[^\n]+),(?<weight>[\s0-9/^$\n].+)");
 
                     foreach (Match m in matches)
                     {
