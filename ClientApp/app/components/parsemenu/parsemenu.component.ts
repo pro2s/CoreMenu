@@ -13,7 +13,7 @@ export class ParseMenuComponent {
     @Output() compleat:EventEmitter<string> = new EventEmitter();
     @ViewChild('parseMenuModal') public parseMenuModal:ModalDirective;
     private http;
-    private readonly hideTimout = 2000;
+    private readonly hideTimout = 3000;
 
     public message: Message;
     public services: MenuService[];
@@ -33,7 +33,7 @@ export class ParseMenuComponent {
     /**
      * hide
      */
-    public hide() {
+    public hide(context = null) {
         this.parseMenuModal.hide();
     }
 
@@ -56,11 +56,9 @@ export class ParseMenuComponent {
         if (id) {
             this.http.get('/api/parser/do', this.input).subscribe(
                 result => {
-                    this.message.text = 'Success parse';
+                    this.message = result.json();
                     this.compleat.emit('complete');
-                    setTimeout(function() {
-                        this.hide();
-                    }, this.hideTimout);
+                    setTimeout(this.hide.bind(this), this.hideTimout);
                 }, error => {
                     console.log('Error');
                     this.message = error.json() 

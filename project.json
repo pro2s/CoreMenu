@@ -22,15 +22,14 @@
     "Microsoft.Extensions.Logging.Debug": "1.1.0",
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.1.0",
     "HtmlAgilityPack.NetCore": "1.5.0.1",
-    "Microsoft.AspNetCore.WebUtilities": "1.1.0"
+    "Microsoft.AspNetCore.WebUtilities": "1.1.0",
+    "Microsoft.Extensions.Caching.Memory": "1.1.0"
   },
-
   "tools": {
     "Microsoft.AspNetCore.Razor.Tools": "1.1.0-preview4-final",
     "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.1.0-preview4-final",
     "Microsoft.DotNet.Watcher.Tools": "1.1.0-preview4-final"
   },
-
   "frameworks": {
     "netcoreapp1.1": {
       "imports": [
@@ -39,22 +38,21 @@
       ]
     }
   },
-
   "buildOptions": {
     "emitEntryPoint": true,
     "preserveCompilationContext": true,
     "debugType": "portable",
     "compile": {
-      "exclude": ["node_modules"]
+      "exclude": [
+        "node_modules"
+      ]
     }
   },
-
   "runtimeOptions": {
     "configProperties": {
       "System.GC.Server": true
     }
   },
-
   "publishOptions": {
     "include": [
       "appsettings.json",
@@ -67,16 +65,16 @@
       "wwwroot/dist/*.map"
     ]
   },
-
   "scripts": {
     "prepublish": [
       "npm install",
       "node node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js --env.prod",
       "node node_modules/webpack/bin/webpack.js --env.prod"
     ],
-    "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
+    "postpublish": [
+      "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%"
+    ]
   },
-
   "tooling": {
     "defaultNamespace": "CoreMenu"
   }

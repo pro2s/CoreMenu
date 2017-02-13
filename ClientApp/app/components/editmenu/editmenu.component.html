@@ -1,4 +1,7 @@
 
 <button type="button" class="btn btn-default" (click)="parse.show()">Pares Menu</button>
 
-<parse-menu #parse></parse-menu>
+<parse-menu #parse (compleat)="update()"></parse-menu>
+
+<h1>Menu</h1>
+{{ text }}

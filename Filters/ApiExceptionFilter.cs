@@ -61,17 +61,25 @@ namespace CoreMenu
         }
     }
 
-    public class ApiError
+    public class ApiError: ApiMessage
     {
-        public string text { get; set; }
-        public bool isError { get; set; }
-        public string detail { get; set; }
+        public new readonly bool isError = true;
         public List<String> errors { get; set; }
+        public ApiError(string message): base (message)
+        {
 
-        public ApiError(string message)
+        }
+
+    }
+
+    public class ApiMessage
+    {
+        public readonly bool isError = false;
+        public string text { get; set; }
+        public string detail { get; set; }
+        public ApiMessage(string message)
         {
             this.text = message;
-            isError = true;
         }
     }
 }
