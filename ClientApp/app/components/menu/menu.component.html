@@ -1,0 +1,17 @@
+<div class="panel">
+    <div class="panel-heading">{{menu.name}} - {{menu.onDate|amDateFormat:'L'}}</div>
+    <ul class="list-group">
+        <li class="list-group-item usermenu"  *ngFor="let item in menu.items">
+            <div class="btn-group pull-right">
+                <button class="btn btn-default" type="button" click="showComments()"><span class="fa fa-comments-o" aria-hidden="true"></span></button>
+            </div>
+            {{item.name}}&nbsp;<sup>{{item.weight}}</sup>
+            <div>[item rating]</div>
+            </div>
+        </li>
+    </ul>
+    <div class="panel-footer price">
+        <div>{{menu.price}}</div>
+        <div>[menu rating]</div>
+    </div>
+</div>
