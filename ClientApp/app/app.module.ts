@@ -24,7 +24,8 @@ import { EditMenuComponent } from './components/editmenu/editmenu.component';
         EditMenuComponent
     ],
     imports: [
-        UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
+        // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
+        UniversalModule, 
         FormsModule,
         MomentModule,
         ModalModule.forRoot(),
