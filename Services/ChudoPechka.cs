@@ -14,6 +14,9 @@ namespace CoreMenu.Services
     /// </summary>
     public class ChudoPechka
     {
+        const double FULL_PRICE = 3.5;
+        const double PRICE = 3.0;
+
         protected string _url;
         protected DateTime _monday;
         protected IEnumerable<HtmlNode> _html_menu;
@@ -85,7 +88,7 @@ namespace CoreMenu.Services
             Menu daymenu = new Menu()
             {
                 Name = "Полный обед",
-                Price = 35000,
+                Price = ChudoPechka.FULL_PRICE,
                 Items = copy_items,
                 OnDate = _monday.AddDays(day),
                 Type = MenuType.NormalMenu,
@@ -104,7 +107,7 @@ namespace CoreMenu.Services
             daymenu = new Menu()
             {
                 Name = "Без первого",
-                Price = 30000,
+                Price = ChudoPechka.PRICE,
                 Items = copy_items,
                 OnDate = _monday.AddDays(day),
                 Type = MenuType.NormalMenu,

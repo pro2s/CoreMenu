@@ -2,6 +2,7 @@ import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
 import { ModalDirective } from 'ng2-bootstrap/modal';
 import { DateService } from '../../services/date.service';
+import { Message } from '../../model/system';
 
 @Component({
     selector: 'parse-menu',
@@ -14,8 +15,9 @@ export class ParseMenuComponent {
     @ViewChild('parseMenuModal') public parseMenuModal:ModalDirective;
     private http;
     private readonly hideTimout = 3000;
+    private message: Message;
 
-    public message: Message;
+    public active: Boolean = false;
     public services: MenuService[];
     public startDays: SelectDays[] = [];
     public input: ParseInfo = <ParseInfo> {}
@@ -41,9 +43,7 @@ export class ParseMenuComponent {
      * show
      */
     public show() {
-        if (this.services) {
-            this.parseMenuModal.show();
-        }
+        this.parseMenuModal.show();
     }
 
     /**
@@ -60,7 +60,6 @@ export class ParseMenuComponent {
                     this.compleat.emit('complete');
                     setTimeout(this.hide.bind(this), this.hideTimout);
                 }, error => {
-                    console.log('Error');
                     this.message = error.json() 
                 }
             );  
@@ -90,6 +89,7 @@ export class ParseMenuComponent {
             this.services = result.json() as MenuService[];
             if (this.services.length > 0) {
                 this.setSource(this.services[0]);
+                this.active = true;
             }
         });
     }
@@ -113,11 +113,4 @@ interface ParseInfo {
     count: Number;
     update: Boolean;
     next: Boolean;
-}
-
-interface Message {
-    text: String;
-    isError: Boolean;
-    detail: String;
-    errors: String[];
 }

@@ -11,6 +11,8 @@ import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { ParseMenuComponent } from './components/parsemenu/parsemenu.component';
 import { EditMenuComponent } from './components/editmenu/editmenu.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { StarRatingComponent } from './components/general/star-rating.component';
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -21,7 +23,9 @@ import { EditMenuComponent } from './components/editmenu/editmenu.component';
         FetchDataComponent,
         HomeComponent,
         ParseMenuComponent,
-        EditMenuComponent
+        EditMenuComponent,
+        MenuComponent,
+        StarRatingComponent
     ],
     imports: [
         // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.

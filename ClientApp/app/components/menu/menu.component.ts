@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Menu } from '../../model/menu';
 
 @Component({
-    moduleId: module.id,
-    selector: 'menu',
+    selector: '[Menu]',
     templateUrl: 'menu.component.html'
 })
 export class MenuComponent implements OnInit {
-    public menu: Menu;
+    @Input() menu: Menu;
 
     constructor() { }
     

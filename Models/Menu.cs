@@ -16,7 +16,7 @@ namespace CoreMenu.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int Price { get; set; }
+        public double Price { get; set; }
         public DateTime? OnDate { get; set; }
         public MenuType Type { get; set; }
 

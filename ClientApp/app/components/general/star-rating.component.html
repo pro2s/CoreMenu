@@ -1,0 +1,5 @@
+<ul class="star-rating" [ngClass]="{readonly: readonly}">
+    <li *ngFor="let star of stars; let i = index;" class="star" [ngClass]="{'filled': star.filled, 'average':star.average}" (click)="toggle(i)">
+        <i class="fa fa-star"></i> 
+    </li>
+</ul>
