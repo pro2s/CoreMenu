@@ -1,16 +1,22 @@
 <div class="panel panel-default">
-    <div class="panel-heading">{{menu.name}} - {{menu.onDate|amDateFormat:'L'}}</div>
+    <div class="panel-heading">
+        <div class="pull-right" *ngIf="editable">
+            <span (click)="edit.emit(menu.id)" role="button" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            <span (click)="edit.emit(menu.id)" role="button" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </div>
+        {{menu.name}} - {{menu.onDate|amDateFormat:'L'}} : {{edit.observers.length}} : {{delete.observers.length}}
+    </div>
     <ul class="list-group">
         <li class="list-group-item usermenu"  *ngFor="let item of menu.items">
-            <div class="btn-group pull-right">
+            <div class="btn-group pull-right" *ngIf="showComment">
                 <button class="btn btn-default" type="button" (click)="showComments()"><span class="fa fa-comments-o" aria-hidden="true"></span></button>
             </div>
             {{item.name}}&nbsp;<sup>{{item.weight}}</sup>
-            <star-rating></star-rating>
+            <star-rating *ngIf="showRating"></star-rating>
         </li>
     </ul>
     <div class="panel-footer price">
         <div>{{menu.price}}</div>
-        <star-rating></star-rating>
+        <star-rating *ngIf="showRating"></star-rating>
     </div>
 </div>

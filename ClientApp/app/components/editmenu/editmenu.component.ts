@@ -14,25 +14,8 @@ export class EditMenuComponent implements OnInit {
     constructor(http: Http,) { 
         this.http = http;
         this.message = { text: '', isError: false, detail:'', errors:[] };
-        this.getMenu();
-    }
-    
-    /**
-     * update
-     */
-    public update() {
-        this.getMenu();
     }
 
-    public getMenu() {
-        this.http.get('/api/menu/menus').subscribe(
-            result => {
-                this.menus = result.json() as Menu[];
-            }, error => {
-                this.message = error.json() 
-            }
-        );  
-    }
 
     ngOnInit() { }
 }

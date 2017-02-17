@@ -1,14 +1,8 @@
 <div class="raw">
     <div class="col-md-12">
         <button type="button" class="btn btn-default" (click)="parse.show()" [disabled]="!parse.active">Pares Menu</button>
-        <parse-menu #parse (compleat)="update()"></parse-menu>
+        <parse-menu #parse (compleat)="menuList.update"></parse-menu>
         <h1>Menu</h1>
     </div>
-
-    <template ngFor let-menu [ngForOf]="menus" let-index="index">
-        <div class="col-md-3" Menu [menu]="menu"></div>
-        <div class="clearfix" *ngIf="(index + 1) % 4 == 0"></div>
-    </template>
-    
-
 </div>
+<menu-list #menuList [editable]="true" [columns]=3></menu-list>

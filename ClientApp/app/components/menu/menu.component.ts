@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Menu } from '../../model/menu';
 
 @Component({
@@ -7,8 +7,14 @@ import { Menu } from '../../model/menu';
 })
 export class MenuComponent implements OnInit {
     @Input() menu: Menu;
-
-    constructor() { }
+    @Input() editable: Boolean = false;
+    @Input() showRating: Boolean = true;
+    @Input() showComment: Boolean = true;
+    @Output() delete:EventEmitter<Number> = new EventEmitter();
+    @Output() edit:EventEmitter<Number> = new EventEmitter();
+    
+    constructor() { 
+    }
     
     /**
      * showComments
@@ -17,5 +23,6 @@ export class MenuComponent implements OnInit {
         
     }
 
-    ngOnInit() { }
+    ngOnInit() { 
+    }
 }
