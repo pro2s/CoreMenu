@@ -1,4 +1,7 @@
-<template ngFor let-menu [ngForOf]="menus" let-index="index">
-    <div [ngClass]="{'col-md-3': columns == 4, 'col-md-4': columns == 3}" Menu [menu]="menu" [showComment]="!editable" [showRating]="!editable" [editable]="editable" (delete)="deleteMenu($event)" (edit)="editMenu($event)"></div>
+<template  ngFor let-menu [ngForOf]="menus" let-index="index">
+    <div [ngClass]="{'col-md-3': columns == 4, 'col-md-4': columns == 3}" [ngSwitch]="editable">
+        <div Menu *ngSwitchCase="true"  [menu]="menu" [showComment]="false" [showRating]="false" [editable]="editable" (delete)="deleteMenu($event)" (edit)="editMenu($event)"></div>
+        <div Menu *ngSwitchCase="false" [menu]="menu" [showComment]="true"></div>
+    </div>
     <div class="clearfix" *ngIf="(index + 1) % getColumns() == 0"></div>
 </template>

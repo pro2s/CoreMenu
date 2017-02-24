@@ -31,6 +31,9 @@ namespace CoreMenu.Controllers
         public IEnumerable<Menu> Menus()
         {
             List<Menu> menus = (List<Menu>) _cache.Get("menus");
+            if (null == menus) {
+                menus = new List<Menu>();
+            }
             return menus;
         }
         

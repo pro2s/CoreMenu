@@ -5,7 +5,7 @@ star-rating {
 .star-rating {
   margin: 0;
   padding: 0;
-  display: block;
+  display: inline-block;
 }
 .star-rating .star {
   padding: 1px;

@@ -3,7 +3,8 @@ import { Menu } from '../../model/menu';
 
 @Component({
     selector: '[Menu]',
-    templateUrl: 'menu.component.html'
+    templateUrl: 'menu.component.html',
+    styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
     @Input() menu: Menu;

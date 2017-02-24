@@ -1,0 +1,29 @@
+ul.panel-contol {
+    margin-top: -3px;
+    margin-right: -8px;
+    text-align: center;
+    list-style: none;
+}
+
+ul.panel-contol > li {
+    display: inline-block;
+    width: 30px;
+    line-height: 30px;
+} 
+
+ul.panel-contol > li:hover {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,.6);
+}
+
+.price {
+    display: table;
+    width: 100%;
+    vertical-align: middle;
+}
+.price > div {
+    display: table-cell;
+    width:100%;
+    vertical-align: middle;
+}

@@ -3,6 +3,7 @@ import { enableProdMode } from '@angular/core';
 import { platformUniversalDynamic } from 'angular2-universal';
 import { AppModule } from './app/app.module';
 import 'bootstrap';
+import './css/site.less';
 
 // Enable either Hot Module Reloading or production mode
 if (module['hot']) {

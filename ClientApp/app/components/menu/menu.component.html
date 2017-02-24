@@ -1,10 +1,12 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <div class="pull-right" *ngIf="editable">
-            <span (click)="edit.emit(menu.id)" role="button" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-            <span (click)="edit.emit(menu.id)" role="button" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        <ul class="pull-right panel-contol" *ngIf="editable">
+            <li (click)="edit.emit(menu.id)" role="button"><i class="fa fa-pencil-square-o fa-1x" aria-hidden="true"></i></li>
+            <li (click)="edit.emit(menu.id)" role="button"><i class="fa fa-trash-o fa-1x" aria-hidden="true"></i></li>
+        </ul>
+        <div class="panel-title">
+            {{menu.name}} - {{menu.onDate|amDateFormat:'L'}}
         </div>
-        {{menu.name}} - {{menu.onDate|amDateFormat:'L'}} : {{edit.observers.length}} : {{delete.observers.length}}
     </div>
     <ul class="list-group">
         <li class="list-group-item usermenu"  *ngFor="let item of menu.items">
@@ -12,11 +14,11 @@
                 <button class="btn btn-default" type="button" (click)="showComments()"><span class="fa fa-comments-o" aria-hidden="true"></span></button>
             </div>
             {{item.name}}&nbsp;<sup>{{item.weight}}</sup>
-            <star-rating *ngIf="showRating"></star-rating>
+            <div star-rating *ngIf="showRating"></div>
         </li>
     </ul>
     <div class="panel-footer price">
+        <div star-rating *ngIf="showRating"></div>
         <div>{{menu.price}}</div>
-        <star-rating *ngIf="showRating"></star-rating>
     </div>
 </div>
